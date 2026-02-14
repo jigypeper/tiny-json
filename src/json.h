@@ -56,4 +56,20 @@ void json_free(json_value_t *value);
 json_value_t *json_object_get(json_object_t *obj, const char *key);
 json_value_t *json_array_get(json_array_t *arr, size_t index);
 
+// Serialization
+char *json_stringify(json_value_t *value);
+char *json_stringify_pretty(json_value_t *value, int indent);
+
+// Builders (for creating JSON programmatically)
+json_value_t *json_create_null(void);
+json_value_t *json_create_bool(bool value);
+json_value_t *json_create_number(double value);
+json_value_t *json_create_string(const char *value);
+json_value_t *json_create_array(void);
+json_value_t *json_create_object(void);
+
+// Mutators
+void json_array_append(json_array_t *arr, json_value_t *value);
+void json_object_set(json_object_t *obj, const char *key, json_value_t *value);
+
 #endif
